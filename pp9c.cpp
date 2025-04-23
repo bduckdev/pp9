@@ -1,29 +1,44 @@
 /*
  * Name: pp9c.cpp
  * Author: Brennan Duck, Gracie Cagley, Ella Szymczak
- * Takes name and age via stdin and returns them via stdout
+ * Takes name and birthYear via stdin and returns them via stdout
  */
 #include <iostream>
 using namespace std;
 
+const int CURRENT_YEAR = 2025;
+
 // Prototype
-void getData(string &name, int &age);
+void getData(string *name, int *birthYear);
 
 int main() {
+  char c = 'Y';
   string name;
-  int age;
+  int birthYear;
 
-  // Prompt the user for info
-  cout << "Enter your name and age: ";
-  // Call getData()
-  getData(name, age);
-  cout << name << " " << age << endl;
+  // Keep prompting the user unless c is 'N' or 'n'
+  while (c != 'N' && c != 'n') {
+    // Call getData()
+    getData(&name, &birthYear);
+    // Print output and ask user if they want to continue
+    cout << name << " was " << CURRENT_YEAR - birthYear << " c " << CURRENT_YEAR
+         << '\n';
+    cout << "Continue (Y/N)? ";
+    cin >> c;
+    cin.ignore();
+  }
 
   return 0;
 }
 
 /*
- * getData(): Records the value of age and getData
- * Params: References to name and age to record values to.
+ * getData(): Records the value of birthYear and getData
+ * Params: References to name and birthYear to record values to.
  */
-void getData(string &name, int &age) { cin >> name >> age; }
+void getData(string *name, int *birthYear) {
+  // Ask user for name and birth year, then store the values
+  cout << "Enter name: ";
+  getline(cin, *name);
+  cout << "Enter birth year: ";
+  cin >> *birthYear;
+}
