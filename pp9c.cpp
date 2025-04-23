@@ -21,8 +21,8 @@ int main() {
     // Call getData()
     getData(&name, &birthYear);
     // Print output and ask user if they want to continue
-    cout << name << " was " << CURRENT_YEAR - birthYear << " c " << CURRENT_YEAR
-         << '\n';
+    cout << name << " was " << CURRENT_YEAR - birthYear << " in "
+         << CURRENT_YEAR << '\n';
     cout << "Continue (Y/N)? ";
     cin >> c;
     cin.ignore();
